@@ -7,45 +7,58 @@
  */
 public class Task1111 {
     public static void main(String[] args) {
-        StdOut.print("Enter cols num: ");
-        int n = StdIn.readInt();
-        StdOut.print("Enter rows num: ");
-        int m = StdIn.readInt();
+//        StdOut.print("Enter cols num: ");
+//        int n = StdIn.readInt();
+//        StdOut.print("Enter rows num: ");
+//        int m = StdIn.readInt();
+//
+//        boolean[][] mas = new boolean[n][m];
+//
+//        for (int i = 0; i < mas.length; i++) {
+//            for (int j = 0; j < mas[0].length; j++) {
+//                mas[i][j] = StdRandom.bernoulli();
+//            }
+//        }
+//
+//        for (int i = 0; i < mas.length; i++) {
+//            for (int j = 0; j < mas[0].length; j++) {
+//                if (mas[i][j]) {
+//                    StdOut.print('*');
+//                } else {
+//                    StdOut.print(' ');
+//                }
+//            }
+//            StdOut.println();
+//        }
+//
+//        trans(mas);
+//
+//        for (int i = 0; i < mas.length; i++) {
+//            for (int j = 0; j < mas[0].length; j++) {
+//                if (mas[i][j]) {
+//                    StdOut.print('*');
+//                } else {
+//                    StdOut.print(' ');
+//                }
+//            }
+//            StdOut.println();
+//        }
+//
+//        StdOut.println("Enter num for find log(2)");
+//        StdOut.println("Result: "+ lg(StdIn.readInt()));
 
-        boolean[][] mas = new boolean[n][m];
-
-        for (int i = 0; i < mas.length; i++) {
-            for (int j = 0; j < mas[0].length; j++) {
-                mas[i][j] = StdRandom.bernoulli();
-            }
+        int[] mas = new int[10];
+        for (int i = 0; i < mas.length; i++){
+            mas[i] = StdRandom.uniform(10);
         }
-
-        for (int i = 0; i < mas.length; i++) {
-            for (int j = 0; j < mas[0].length; j++) {
-                if (mas[i][j]) {
-                    StdOut.print('*');
-                } else {
-                    StdOut.print(' ');
-                }
-            }
-            StdOut.println();
+        for (int i = 0; i < mas.length; i++){
+            StdOut.print(mas[i] + " ");
         }
-
-        trans(mas);
-
-        for (int i = 0; i < mas.length; i++) {
-            for (int j = 0; j < mas[0].length; j++) {
-                if (mas[i][j]) {
-                    StdOut.print('*');
-                } else {
-                    StdOut.print(' ');
-                }
-            }
-            StdOut.println();
+        StdOut.println();
+        int[] res = histogram(mas, mas.length);
+        for (int i = 0; i < res.length; i++){
+            StdOut.print(res[i] + " ");
         }
-
-        StdOut.println("Enter num for find log(2)");
-        StdOut.println("Result: "+ lg(StdIn.readInt()));
     }
 
     public static void trans(boolean[][] mas) {
@@ -74,5 +87,22 @@ public class Task1111 {
             }
         }
     return -1;
+    }
+
+    public static int[] histogram(int[] a, int m){
+        int[] results = new int[m];
+
+        int count;
+        for (int i = 0; i < a.length; i++){
+            count = 0;
+            for (int j = 0; j < a.length; j++){
+                 if (a[i] == a[j]){
+                     count++;
+                 }
+            results[i] = count;
+            }
+        }
+        return results;
+
     }
 }
